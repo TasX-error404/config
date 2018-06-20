@@ -9,7 +9,7 @@
 #
 # Please see https://i3wm.org/docs/userguide.html for a complete reference!
 #Wallpaper
-exec --no-startup-id feh --bg-scale "/home/tasx/Picture/blue.jpeg"
+exec --no-startup-id feh --bg-scale "/home/tasx/Pictures/cike.jpg"
 set $mod Mod4
 
 # Font for window titles. Will also be used by the bar unless a different font
@@ -32,10 +32,21 @@ font pango:monospace 8
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec i3-sensible-terminal
+bindsym $mod+Return exec xfce4-terminal
 
 # kill focused window
 bindsym $mod+Shift+q kill
+
+set $WS1  1:
+set $WS2  2:
+set $WS3  3:
+set $WS4  4:
+set $WS5  5:
+set $WS6  6:
+set $WS7  7:
+set $WS8  8:
+set $WS9  9:
+set $WS0 10:
 
 # start dmenu (a program launcher)
 # bindsym $mod+d exec dmenu_run
@@ -102,8 +113,8 @@ bindsym $mod+a focus parent
 #bindsym $mod+d focus child
 
 # switch to workspace
-bindsym $mod+1 workspace 1
-bindsym $mod+2 workspace 2
+bindsym $mod+1 workspace $WS1,exec --no-startup-id ~/bin/st xfce4-terminal
+bindsym $mod+2 workspace $WS2, exec --no-startup-id  firefox
 bindsym $mod+3 workspace 3
 bindsym $mod+4 workspace 4
 bindsym $mod+5 workspace 5
@@ -158,26 +169,29 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
-exec_always --no-startup-id $HOME/.config/polybar/launch.sh
+
+#exec_always --no-startup-id $HOME/.config/polybar/launch.sh
+
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
   #status_command $HOME/.config/conky/build-i3bar
-    status_command conky -c ~/.config/conky/conky.conf
+    status_command conky -c ~/.config/conky/conkyrc_bar1.10
     #position bottom
+    strip_workspace_numbers yes
     #font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
     #font pango:MV Boli Regular 10
     #font pango:Cantarell Regular 9
-    #font pango:Monaco Nerd Font 9
+    font pango:Monaco Nerd Font 9
     #font pango:Noto Sans Mono Regular 10
     #font pango:Segoe UI Fett 9
     #font pango:Adobe Courier Regular 9
     #font pango:AvantGarde LT Medium Regular 10
-    font pango:Hermit medium 9
+    #font pango:Hermit medium 9
     #font pango:WenQuanYi WenQuanYi Bitmap Song 10
   colors {
     separator #586e75
-    background #002b36
+    background #132930
     statusline #aea79f
     focused_workspace #586e75 #586e75 #ffffff
     active_workspace #073642 #073642 #ffffff
@@ -289,7 +303,7 @@ bindsym $mod+Ctrl+l exec --no-startup-id i3lock -t -i `[ -d $lock_screen_dir ] &
 # ...todo
 
 # focus follows mouse
-focus_follows_mouse no
+focus_follows_mouse yes
 
 # bindsym $mod+p exec "/bin/bash /tmp/toggle_test.sh"
 # bindsym $mod+p exec "notify-send asdf "
@@ -304,7 +318,6 @@ exec --no-startup-id fcitx &
 exec --no-startup-id pamac-tray &
 exec --no-startup-id volumeicon &
 
-exec --no-startup-id i3-sensible-terminal &
 #exec --no-startup-id i3-sensible-terminal -x vim &
 
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 & eval $(gnome-keyring-daemon -s --components=pkcs11,secrets,ssh,gpg) &
