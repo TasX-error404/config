@@ -9,9 +9,10 @@
 #
 # Please see https://i3wm.org/docs/userguide.html for a complete reference!
 #Wallpaper
-exec --no-startup-id feh --bg-scale "/home/tasx/Pictures/cike.jpg"
+exec --no-startup-id feh --bg-fill "/home/tasx/Pictures/0b9949310a55b319f482b4f745a98226cefc1796.jpg"
 set $mod Mod4
-
+exec --no-startup-id conky -d -c ~/.i3/conkybg
+exec --no-startup-id conky -c ~/.i3/conky-bottom
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
 font pango:monospace 8
@@ -114,7 +115,7 @@ bindsym $mod+a focus parent
 
 # switch to workspace
 bindsym $mod+1 workspace $WS1,exec --no-startup-id ~/bin/st xfce4-terminal
-bindsym $mod+2 workspace $WS2, exec --no-startup-id  firefox
+bindsym $mod+2 workspace $WS2, exec --no-startup-id ~/bin/st firefox
 bindsym $mod+3 workspace 3
 bindsym $mod+4 workspace 4
 bindsym $mod+5 workspace 5
@@ -190,10 +191,10 @@ bar {
     #font pango:Hermit medium 9
     #font pango:WenQuanYi WenQuanYi Bitmap Song 10
   colors {
-    separator #586e75
+    separator #64D5F9
     background #132930
-    statusline #aea79f
-    focused_workspace #586e75 #586e75 #ffffff
+    statusline #64D5F9
+    focused_workspace #64D5F9 #586e75 #ffffff
     active_workspace #073642 #073642 #ffffff
     inactive_workspace #002b36 #002b36 #aea79f
     urgent_workspace #77216f #77216f #ffffff
